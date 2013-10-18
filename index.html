@@ -5,7 +5,7 @@
 <title>PGF</title>
 <style type="text/css">
 body{
-  background-color:#222;
+  background-color:#393939;
 }
 .fe_url{
   width:300px;
@@ -60,7 +60,15 @@ body{
   margin-left:-160px;
   margin-top:-100px;
 }
-
+#loading_img{
+  width:260px;
+  height:350px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  margin-left:-130px;
+  margin-top:-175px;
+}
 </style>
 <script src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
@@ -74,6 +82,7 @@ jQuery(function(){
 	var url_open_hdr;
 	
 	var $form_box = jQuery('#form_box')
+	var $loading_img = jQuery('#loading_img');
 	
 	if (s_url){
 		url_open_hdr = window.setTimeout(function(){
@@ -88,6 +97,7 @@ jQuery(function(){
 			if( tap_tr ){
 				window.clearTimeout(url_open_hdr);
 				$form_box.fadeIn();
+				$loading_img.fadeOut();
 			}
 			return false;
 		});
@@ -97,6 +107,7 @@ jQuery(function(){
 			if( tap_tl ){
 				window.clearTimeout(url_open_hdr);
 				$form_box.fadeIn();
+				$loading_img.fadeOut();
 			}
 			return false;
 		});
@@ -104,6 +115,7 @@ jQuery(function(){
 	}else{
 		window.setTimeout(function(){
 			$form_box.fadeIn();
+			$loading_img.fadeOut();
 		},open_delay+100);
 	}
 	
@@ -135,6 +147,8 @@ jQuery(function(){
 </head>
 
 <body>
+
+<div id="loading_img"><img src="img/loading03.gif" width="260" height="350" alt="" /></div>
 
 <div id="form_box">
 	<input type="text" class="fe_url" id="fe_root_url" value="http://">
