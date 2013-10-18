@@ -72,6 +72,7 @@ body{
 </style>
 <script src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
+
 jQuery(function(){
 	
 	if( !window.localStorage ) return alert("Sorry,your browser didn't support localStorage");
@@ -84,7 +85,7 @@ jQuery(function(){
 	var $form_box = jQuery('#form_box')
 	var $loading_img = jQuery('#loading_img');
 	
-	if (s_url){
+	if (s_url && s_url!='http://' ){
 		url_open_hdr = window.setTimeout(function(){
 			window.location.href = s_url;
 		},open_delay);
@@ -92,23 +93,25 @@ jQuery(function(){
 		var tap_tl = false;
 		var tap_tr = false;
 		
-		jQuery('#tap_tl').click(function(){
+		jQuery('#tap_tl').bind('touchstart',function(){
 			tap_tl = true;
 			if( tap_tr ){
 				window.clearTimeout(url_open_hdr);
 				$form_box.fadeIn();
 				$loading_img.fadeOut();
 			}
+			alert('tl');
 			return false;
 		});
 		
-		jQuery('#tap_tr').click(function(){
+		jQuery('#tap_tr').bind('touchstart',function(){
 			tap_tr = true;
 			if( tap_tl ){
 				window.clearTimeout(url_open_hdr);
 				$form_box.fadeIn();
 				$loading_img.fadeOut();
 			}
+			alert('tr');
 			return false;
 		});
 
