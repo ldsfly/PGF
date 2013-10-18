@@ -129,7 +129,7 @@ jQuery(function(){
 	jQuery('#btn_chang_url').click(
 		function(){
 			var url_val = jQuery.trim(jQuery('#fe_root_url').val());
-			if( url_val ){
+			if( url_val && url_val!='http://' ){
 				window.localStorage.removeItem('root_url');
 				window.localStorage.setItem('root_url',url_val);
 				window.location.href = url_val;
