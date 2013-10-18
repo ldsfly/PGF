@@ -78,7 +78,6 @@ jQuery(function(){
 	var $form_box = jQuery('#form_box')
 	
 	if (s_url){
-
 		url_open_hdr = window.setTimeout(function(){
 			window.location.href = s_url;
 		},open_delay);
@@ -104,11 +103,14 @@ jQuery(function(){
 			return false;
 		});
 
-	}	
+	}else{
+		window.setTimeout(function(){
+			$form_box.fadeIn();
+		},open_delay+100);
+	}
 	
-	window.setTimeout(function(){
-		$form_box.fadeIn();
-	},open_delay+100);
+	
+
 	
 	
 	jQuery('#btn_chang_url').click(
