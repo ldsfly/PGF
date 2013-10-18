@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PGF</title>
+<style type="text/css">
+body{
+  background-color:#222;
+}
+.fe_url{
+  width:300px;
+  height:30px;
+  line-height:30px;
+  font-size:20px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  margin-left:-150px;
+  margin-top:-20px;
+}
+.btn_chang_url{
+  width:100px;
+  height:40px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  margin-left:-50px;
+  margin-top:20px;
+  background-color:#06C;
+  border:solid 1px #09F;
+  border-radius:5px;
+  color:#fff;
+  font-size:20px;
+  font-family:"Microsoft Yahei";
+}
+#tap_tl{
+  width:100px;
+  height:100px;
+  position:absolute;
+  left:0;
+  top:0;
+  background-color:#f00;
+}
+#tap_tr{
+  width:100px;
+  height:100px;
+  position:absolute;
+  right:0;
+  top:0;
+  background-color:#f00;
+}
+#form_box{
+  display:none;
+  position:absolute;
+  width:320px;
+  height:200px;
+  left:50%;
+  top:50%;
+  margin-left:-160px;
+  margin-top:-100px;
+}
+
+</style>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+jQuery(function(){
+	
+	
+	if( !window.localStorage ) return alert("Sorry,your browser didn't support localStorage");
+	
+	var s_url = window.localStorage.getItem('root_url') || '';
+
+	var open_delay = 1000;
+	var url_open_hdr;
+	
+	var $form_box = jQuery('#form_box')
+	
+	if (s_url){
+
+		url_open_hdr = window.setTimeout(function(){
+			window.location.href = s_url;
+		},open_delay);
+
+		var tap_tl = false;
+		var tap_tr = false;
+		
+		jQuery('#tap_tl').click(function(){
+			tap_tl = true;
+			if( tap_tr ){
+				window.clearTimeout(url_open_hdr);
+				$form_box.fadeIn();
+			}
+			return false;
+		});
+		
+		jQuery('#tap_tr').click(function(){
+			tap_tr = true;
+			if( tap_tl ){
+				window.clearTimeout(url_open_hdr);
+				$form_box.fadeIn();
+			}
+			return false;
+		});
+
+	}	
+	
+	window.setTimeout(function(){
+		$form_box.fadeIn();
+	},open_delay+100);
+	
+	
+	jQuery('#btn_chang_url').click(
+		function(){
+			var url_val = jQuery.trim(jQuery('#fe_root_url').val());
+			if( url_val ){
+				window.localStorage.removeItem('root_url');
+				window.localStorage.setItem('root_url',url_val);
+			}else{
+				window.localStorage.removeItem('root_url');
+			}
+		}
+	);
+	
+})
+
+
+
+
+
+
+</script>
+</head>
+
+<body>
+
+<div id="form_box">
+	<input type="text" class="fe_url" id="fe_root_url">
+	<input type="button" class="btn_chang_url" id="btn_chang_url" value="SET URL">
+</div>
+
+<div id="tap_tl"></div>
+<div id="tap_tr"></div>
+
+</body>
+</html>
