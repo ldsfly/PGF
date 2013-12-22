@@ -4,8 +4,8 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.gudidea.pgf"
-        version   = "1.0.3"
-				versionCode="13">
+        version   = "1.0.4"
+				versionCode="14">
   <name>轨道交通联合实训软件</name>
   <description>轨道交通联合实训软件</description>
   <author href="http://gudidea.com" email="support@gudidea.com">gudidea</author>
